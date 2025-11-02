@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A-Vibe | DJ Experience</title>
+  <!-- Tailwind CDN để có giao diện đẹp ngay (không cần cài gì) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --avibe-bg: #0b0b0f }
+    body { background: var(--avibe-bg); color:#fff }
+    .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12) }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 glass backdrop-blur">
+    <nav class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div class="text-xl font-extrabold tracking-wide">A-Vibe<span class="text-purple-400">DJ</span></div>
+      <ul class="flex gap-4 text-sm">
+        <li><a href="#home" class="px-3 py-1 rounded hover:bg-white/10">Trang chủ</a></li>
+        <li><a href="#pricing" class="px-3 py-1 rounded hover:bg-white/10">Bảng giá</a></li>
+        <li><a href="#contact" class="px-3 py-1 rounded hover:bg-white/10">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="max-w-6xl mx-auto px-4 py-12 text-center">
+    <h1 class="text-5xl font-extrabold">A-Vibe <span class="text-purple-400">DJ</span></h1>
+    <p class="mt-4 text-white/80">Tạo nên “vibe” bùng nổ cho party, lễ cưới, sự kiện công ty và club mini.</p>
+    <div class="mt-6 flex items-center justify-center gap-3 text-sm">
+      <a href="#pricing" class="px-5 h-11 rounded-xl glass hover:bg-white/10 flex items-center">Xem bảng giá</a>
+      <a href="#contact" class="px-5 h-11 rounded-xl border border-purple-500 hover:bg-purple-600/20 flex items-center">Đặt lịch nhanh</a>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="max-w-6xl mx-auto px-4 py-10">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl font-extrabold">Bảng giá (7 combo)</h2>
+      <p class="text-white/70 mt-2">Chọn hạng dịch vụ để xem giá: <strong>Bình thường</strong> hoặc <strong>Cao cấp</strong></p>
+
+      <!-- Nút chuyển hạng -->
+      <div class="mt-6 inline-flex p-1 rounded-xl glass">
+        <button id="btn-normal" class="px-4 py-2 rounded-lg text-sm bg-black">Bình thường</button>
+        <button id="btn-premium" class="px-4 py-2 rounded-lg text-sm">Cao cấp</button>
+      </div>
+    </div>
+
+    <!-- Lưới combo -->
+    <div id="combo-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Mỗi thẻ combo: đổi giá theo hạng qua data-* -->
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 1: Starter</h3>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="2.500.000đ" data-premium="3.900.000đ">2.500.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 2 giờ</li>
+          <li>Âm thanh cơ bản</li>
+          <li>Playlist theo yêu cầu 10 bài</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 2: Party Small</h3>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="3.500.000đ" data-premium="5.200.000đ">3.500.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh + 2 đèn moving</li>
+          <li>MC cơ bản</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6 border border-purple-500 shadow-[0_0_25px_rgba(168,85,247,0.25)]">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 3: Wedding Lite</h3>
+          <span class="text-xs px-2 py-1 rounded bg-purple-600">Hot</span>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="4.500.000đ" data-premium="6.800.000đ">4.500.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh + ánh sáng lễ cưới</li>
+          <li>Mic không dây</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 4: Club Mini</h3>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="6.000.000đ" data-premium="8.900.000đ">6.000.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 4 giờ</li>
+          <li>Âm thanh mạnh + 4 moving</li>
+          <li>Visual cơ bản</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 5: Festival Lite</h3>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="7.500.000đ" data-premium="10.900.000đ">7.500.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 5 giờ</li>
+          <li>Âm thanh sân khấu nhỏ</li>
+          <li>Visual + khói</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 6: Corporate</h3>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="5.500.000đ" data-premium="8.200.000đ">5.500.000đ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh hội trường</li>
+          <li>Micro + MC + Visual logo</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6 border border-purple-500 shadow-[0_0_25px_rgba(168,85,247,0.25)]">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Combo 7: Custom Pro</h3>
+          <span class="text-xs px-2 py-1 rounded bg-purple-600">Hot</span>
+        </div>
+        <div class="text-3xl font-extrabold mt-2 price" data-normal="Liên hệ" data-premium="Liên hệ">Liên hệ</div>
+        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
+          <li>Thiết kế theo yêu cầu</li>
+          <li>Âm/Ánh theo concept</li>
+          <li>Hỗ trợ kịch bản</li>
+        </ul>
+        <button class="mt-4 h-11 rounded-xl w-full glass hover:bg-white/10">Chọn gói</button>
+      </div>
+    </div>
+
+    <p class="text-center text-sm text-white/70 mt-8">
+      Giá có thể thay đổi theo địa điểm, thời lượng, thiết bị; vui lòng liên hệ để chốt báo giá.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="glass rounded-2xl p-6 max-w-2xl mx-auto">
+      <h2 class="text-3xl font-extrabold mb-2">Liên hệ đặt lịch</h2>
+      <p class="text-white/80 mb-4">Điền thông tin để A-Vibe tư vấn nhanh nhất.</p>
+      <form class="grid gap-3">
+        <input class="h-11 rounded-xl bg-black/30 border border-white/15 px-4" placeholder="Tên của bạn" />
+        <input class="h-11 rounded-xl bg-black/30 border border-white/15 px-4" placeholder="Số điện thoại" />
+        <input class="h-11 rounded-xl bg-black/30 border border-white/15 px-4" placeholder="Email (nếu có)" />
+        <textarea rows="5" class="rounded-xl bg-black/30 border border-white/15 px-4 py-3" placeholder="Mô tả sự kiện (thời gian, địa điểm, số khách, combo quan tâm)"></textarea>
+        <button type="button" class="h-11 rounded-xl glass hover:bg-white/10">Gửi yêu cầu</button>
+      </form>
+      <div class="text-sm text-white/70 mt-4">
+        Hoặc liên hệ nhanh: <a href="tel:0900000000" class="underline">0900 000 000</a> • 
+        Zalo: <a class="underline" href="#">@A-VibeDJ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-12 glass">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-white/70">
+      © <span id="year"></span> A-Vibe. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Hiển thị năm hiện tại
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Chuyển hạng Bình thường / Cao cấp
+    const btnNormal = document.getElementById('btn-normal');
+    const btnPremium = document.getElementById('btn-premium');
+    const prices = document.querySelectorAll('.price');
+
+    function setTier(tier) {
+      prices.forEach(p => {
+        const val = p.dataset[tier];
+        p.textContent = val || '';
+      });
+      if (tier === 'normal') {
+        btnNormal.classList.add('bg-black'); btnPremium.classList.remove('bg-black');
+      } else {
+        btnPremium.classList.add('bg-black'); btnNormal.classList.remove('bg-black');
+      }
+    }
+    btnNormal.addEventListener('click', () => setTier('normal'));
+    btnPremium.addEventListener('click', () => setTier('premium'));
+  </script>
+</body>
+</html>
