@@ -4,33 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>A-Vibe | DJ Experience</title>
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg1:#0a0514; --bg2:#12051f; --neon:#a855f7; --neon2:#22d3ee; }
-    /* nền gradient động */
+    :root { --bg1:#0a0514; --bg2:#12051f; --neon:#a855f7; --cyan:#22d3ee; }
     body{
-      min-height:100vh; color:#fff; background: radial-gradient(1200px 600px at 10% 0%, #2e1065 0, transparent 50%),
-                               radial-gradient(900px 500px at 90% 100%, #0ea5e9 0, transparent 55%),
-                               linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh; color:#fff;
+      background: radial-gradient(1200px 600px at 10% 0%, #2e1065 0, transparent 55%),
+                  radial-gradient(900px 500px at 95% 100%, #0ea5e9 0, transparent 60%),
+                  linear-gradient(160deg, var(--bg1), var(--bg2));
       background-attachment: fixed;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
     }
     .glass{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); backdrop-filter: blur(6px) }
-    .neon { text-shadow: 0 0 12px rgba(168,85,247,.8), 0 0 28px rgba(34,211,238,.45); }
-    .btn-neon { box-shadow: 0 0 0 0 rgba(168,85,247,.6); transition: box-shadow .25s ease, transform .2s ease; }
-    .btn-neon:hover { transform: translateY(-1px); box-shadow: 0 0 24px 4px rgba(168,85,247,.45); }
-    /* Thanh EQ */
-    .eq { display:flex; gap:6px; align-items:flex-end; height:32px }
-    .eq span{ width:6px; background: linear-gradient(#22d3ee,#a855f7); border-radius:4px; animation: bounce 1.2s infinite ease-in-out; }
-    .eq span:nth-child(2){ animation-delay:.12s } .eq span:nth-child(3){ animation-delay:.24s }
-    .eq span:nth-child(4){ animation-delay:.36s } .eq span:nth-child(5){ animation-delay:.48s }
-    @keyframes bounce{
-      0%,100%{ height:20% } 50%{ height:100% }
-    }
-    /* card glow */
-    .glow { box-shadow: 0 0 0 0 rgba(168,85,247,.0); transition: box-shadow .3s ease, transform .25s ease; }
+    .neon { text-shadow: 0 0 12px rgba(168,85,247,.8), 0 0 28px rgba(34,211,238,.45) }
+    .btn-neon { box-shadow: 0 0 0 0 rgba(168,85,247,.6); transition: box-shadow .25s ease, transform .2s ease }
+    .btn-neon:hover { transform: translateY(-1px); box-shadow: 0 0 24px 4px rgba(168,85,247,.45) }
+    .glow { transition: box-shadow .3s ease, transform .25s ease }
     .glow:hover{ transform: translateY(-2px); box-shadow: 0 0 28px 2px rgba(168,85,247,.25) }
+    /* Ẩn/hiện theo tier */
+    .only-premium{ display:none }
+    .only-normal{ display:inline }
+    .tier-premium .only-premium{ display:inline }
+    .tier-premium .only-normal{ display:none }
   </style>
 </head>
 <body>
@@ -38,7 +33,12 @@
   <!-- NAV -->
   <header class="sticky top-0 z-50 glass">
     <nav class="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
-      <a href="#" class="font-extrabold tracking-wider text-xl neon">A-Vibe<span class="text-cyan-300">DJ</span></a>
+      <a href="#" class="flex items-center gap-3">
+        <!-- Tải logo.png vào gốc repo. Nếu chưa có, chữ A-VibeDJ vẫn hiện. -->
+        <img src="./logo.png" alt="A-Vibe logo" class="h-9 w-9 rounded-md object-contain hidden sm:block"
+             onerror="this.style.display='none'">
+        <span class="font-extrabold tracking-wider text-xl neon">A-Vibe<span class="text-cyan-300">DJ</span></span>
+      </a>
       <ul class="flex gap-1 text-sm">
         <li><a href="#home" class="px-3 py-1.5 rounded-lg hover:bg-white/10">Trang chủ</a></li>
         <li><a href="#pricing" class="px-3 py-1.5 rounded-lg hover:bg-white/10">Bảng giá</a></li>
@@ -49,9 +49,6 @@
 
   <!-- HERO -->
   <section id="home" class="mx-auto max-w-7xl px-4 pt-12 pb-10 text-center">
-    <div class="inline-flex eq mx-auto mb-5">
-      <span style="height:50%"></span><span style="height:70%"></span><span style="height:40%"></span><span style="height:90%"></span><span style="height:60%"></span>
-    </div>
     <h1 class="text-5xl sm:text-6xl font-black neon">Feel the <span class="text-cyan-300">A-Vibe</span></h1>
     <p class="mt-4 text-white/80 max-w-2xl mx-auto">
       DJ cho party, wedding, corporate event & club mini — ánh sáng/visual theo concept, setlist theo mood.
@@ -59,22 +56,6 @@
     <div class="mt-7 flex items-center justify-center gap-3 text-sm">
       <a href="#pricing" class="btn-neon inline-flex items-center h-11 px-5 rounded-xl bg-purple-600/70">Xem bảng giá</a>
       <a href="#contact" class="inline-flex items-center h-11 px-5 rounded-xl glass">Đặt lịch nhanh</a>
-    </div>
-  </section>
-
-  <!-- HIGHLIGHTS -->
-  <section class="mx-auto max-w-7xl px-4 grid md:grid-cols-3 gap-4">
-    <div class="glass rounded-2xl p-5 glow">
-      <h3 class="font-bold text-lg">Âm thanh sân khấu</h3>
-      <p class="text-white/75 text-sm mt-1">Bass chắc, vocal sáng — set theo diện tích & số khách.</p>
-    </div>
-    <div class="glass rounded-2xl p-5 glow">
-      <h3 class="font-bold text-lg">Ánh sáng & Visual</h3>
-      <p class="text-white/75 text-sm mt-1">Moving head, laser, khói, LED — phối màu tím/cyan chuẩn DJ.</p>
-    </div>
-    <div class="glass rounded-2xl p-5 glow">
-      <h3 class="font-bold text-lg">Setlist theo mood</h3>
-      <p class="text-white/75 text-sm mt-1">Nhận yêu cầu track, giữ năng lượng xuyên suốt bữa tiệc.</p>
     </div>
   </section>
 
@@ -89,23 +70,27 @@
       </div>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="combo-grid">
-      <!-- Combo cards -->
+    <div id="price-root" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- LƯU Ý: chỉnh giá & đặc tả ngay trong từng card -->
       <div class="glass rounded-2xl p-6 glow">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-bold">Combo 1 · Starter</h3>
-        </div>
+        <h3 class="text-lg font-bold">Combo 1 · Starter</h3>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="2.500.000đ" data-premium="3.900.000đ">2.500.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 2 giờ</li><li>Âm thanh cơ bản</li><li>Playlist theo yêu cầu 10 bài</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 2 giờ</li>
+          <li>Âm thanh cơ bản (2 loa active)</li>
+          <li>Playlist theo yêu cầu 10 bài</li>
+          <li class="only-premium">+ 1 đèn moving mini & mic không dây</li>
         </ul>
       </div>
 
       <div class="glass rounded-2xl p-6 glow">
-        <div class="flex items-center justify-between"><h3 class="text-lg font-bold">Combo 2 · Party Small</h3></div>
+        <h3 class="text-lg font-bold">Combo 2 · Party Small</h3>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="3.500.000đ" data-premium="5.200.000đ">3.500.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 3 giờ</li><li>Âm thanh + 2 moving</li><li>MC cơ bản</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh 2.1 (2 loa + 1 sub)</li>
+          <li>2 đèn moving & khói nhẹ</li>
+          <li class="only-premium">+ MC cơ bản, 1 sub mạnh hơn</li>
         </ul>
       </div>
 
@@ -115,32 +100,44 @@
           <span class="text-xs px-2 py-1 rounded bg-purple-600">Hot</span>
         </div>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="4.500.000đ" data-premium="6.800.000đ">4.500.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 3 giờ</li><li>Âm thanh + ánh sáng lễ cưới</li><li>Mic không dây</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh + ánh sáng cưới</li>
+          <li>Mic không dây đôi</li>
+          <li class="only-premium">+ Visual nền tên cô dâu/chú rể</li>
         </ul>
       </div>
 
       <div class="glass rounded-2xl p-6 glow">
-        <div class="flex items-center justify-between"><h3 class="text-lg font-bold">Combo 4 · Club Mini</h3></div>
+        <h3 class="text-lg font-bold">Combo 4 · Club Mini</h3>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="6.000.000đ" data-premium="8.900.000đ">6.000.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 4 giờ</li><li>Âm thanh mạnh + 4 moving</li><li>Visual cơ bản</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 4 giờ</li>
+          <li>Âm thanh mạnh (2 loa full + 2 sub)</li>
+          <li>4 moving + laser cơ bản</li>
+          <li class="only-premium">+ Visual theo concept club</li>
         </ul>
       </div>
 
       <div class="glass rounded-2xl p-6 glow">
-        <div class="flex items-center justify-between"><h3 class="text-lg font-bold">Combo 5 · Festival Lite</h3></div>
+        <h3 class="text-lg font-bold">Combo 5 · Festival Lite</h3>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="7.500.000đ" data-premium="10.900.000đ">7.500.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 5 giờ</li><li>Âm thanh sân khấu nhỏ</li><li>Visual + khói</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 5 giờ</li>
+          <li>Âm thanh sân khấu nhỏ</li>
+          <li>Visual + khói dày</li>
+          <li class="only-premium">+ Thêm 2 moving beam & 1 kỹ thuật</li>
         </ul>
       </div>
 
       <div class="glass rounded-2xl p-6 glow">
-        <div class="flex items-center justify-between"><h3 class="text-lg font-bold">Combo 6 · Corporate</h3></div>
+        <h3 class="text-lg font-bold">Combo 6 · Corporate</h3>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="5.500.000đ" data-premium="8.200.000đ">5.500.000đ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>DJ 3 giờ</li><li>Âm thanh hội trường</li><li>Micro + MC + Visual logo</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>DJ 3 giờ</li>
+          <li>Âm thanh hội trường</li>
+          <li>Micro không dây + MC</li>
+          <li class="only-premium">+ Visual gắn logo doanh nghiệp</li>
         </ul>
       </div>
 
@@ -150,14 +147,16 @@
           <span class="text-xs px-2 py-1 rounded bg-purple-600">Hot</span>
         </div>
         <div class="text-3xl font-extrabold mt-2 price" data-normal="Liên hệ" data-premium="Liên hệ">Liên hệ</div>
-        <ul class="text-sm text-white/80 list-disc pl-5 mt-3 space-y-1">
-          <li>Thiết kế theo yêu cầu</li><li>Âm/Ánh theo concept</li><li>Hỗ trợ kịch bản</li>
+        <ul class="text-sm text-white/85 list-disc pl-5 mt-3 space-y-1">
+          <li>Thiết kế theo yêu cầu (âm/ánh/visual)</li>
+          <li>Phối setlist theo kịch bản sự kiện</li>
+          <li class="only-premium">+ Đội kỹ thuật & đạo cụ mở rộng</li>
         </ul>
       </div>
     </div>
 
     <p class="text-center text-sm text-white/70 mt-8">
-      Giá có thể thay đổi theo địa điểm, thời lượng, thiết bị; vui lòng liên hệ để chốt báo giá.
+      *Giá tham khảo — thay đổi theo địa điểm, thời lượng, thiết bị. Liên hệ để chốt báo giá chính xác.
     </p>
   </section>
 
@@ -173,34 +172,35 @@
         <a href="https://zalo.me/" target="_blank" class="h-12 rounded-xl glass flex items-center justify-center">Zalo Chat</a>
         <a href="https://m.me/" target="_blank" class="h-12 rounded-xl glass flex items-center justify-center">Messenger</a>
       </div>
-
-      <form class="grid gap-3 mt-6">
-        <input class="h-11 rounded-xl bg-black/30 border border-white/15 px-4" placeholder="Tên của bạn" />
-        <input class="h-11 rounded-xl bg-black/30 border border-white/15 px-4" placeholder="Số điện thoại" />
-        <textarea rows="5" class="rounded-xl bg-black/30 border border-white/15 px-4 py-3" placeholder="Mô tả sự kiện (thời gian, địa điểm, số khách, combo quan tâm)"></textarea>
-        <button type="button" class="h-11 rounded-xl btn-neon bg-purple-600/70">Gửi yêu cầu</button>
-      </form>
     </div>
   </section>
 
   <footer class="glass">
     <div class="mx-auto max-w-7xl px-4 py-8 text-sm text-white/70 flex items-center justify-between">
       <span>© <span id="year"></span> A-Vibe. All rights reserved.</span>
-      <div class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <span>Made with ♫</span>
     </div>
   </footer>
 
   <script>
     // Năm hiện tại
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Toggle hạng giá
+
+    // Toggle tier
     const btnNormal = document.getElementById('btn-normal');
     const btnPremium = document.getElementById('btn-premium');
     const prices = document.querySelectorAll('.price');
+    const priceRoot = document.getElementById('price-root');
+
     function setTier(tier){
       prices.forEach(p => p.textContent = p.dataset[tier] || '');
-      if(tier==='normal'){ btnNormal.classList.add('bg-black'); btnPremium.classList.remove('bg-black'); }
-      else{ btnPremium.classList.add('bg-black'); btnNormal.classList.remove('bg-black'); }
+      if(tier==='normal'){
+        btnNormal.classList.add('bg-black'); btnPremium.classList.remove('bg-black');
+        priceRoot.classList.remove('tier-premium');
+      }else{
+        btnPremium.classList.add('bg-black'); btnNormal.classList.remove('bg-black');
+        priceRoot.classList.add('tier-premium');
+      }
     }
     btnNormal.addEventListener('click', ()=>setTier('normal'));
     btnPremium.addEventListener('click', ()=>setTier('premium'));
