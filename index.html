@@ -1,335 +1,195 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-Vibe – All Anywhere Alive 2025</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-Vibe – All Anywhere Alive</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Montserrat", sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: url("https://i.ibb.co/KVYRTCX/A-Vibe-Poster.png") center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.45);
-        }
-
-        header .content {
-            position: relative;
-            z-index: 2;
-        }
-
-        h1 {
-            font-size: 55px;
-            font-weight: 900;
-            margin: 0;
-            letter-spacing: 3px;
-        }
-
-        h3 {
-            margin-top: 10px;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #ffffff15;
-            padding: 14px 35px;
-            border-radius: 40px;
-            color: #fff;
-            margin-top: 20px;
-            border: 1px solid #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        /* SECTION */
-        section {
-            padding: 70px 20px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .about {
-            max-width: 900px;
-            margin: auto;
-            font-size: 18px;
-            line-height: 1.7;
-            opacity: 0.9;
-        }
-
-        /* CONTACT BOX */
-        .contact-box {
-            margin-top: 40px;
-            background: #111;
-            padding: 25px;
-            border-radius: 15px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px solid #333;
-        }
-
-        .contact-info {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid #222;
-            margin-top: 30px;
-            opacity: 0.7;
-        }
-
-    </style>
-</head>
-<body>
-/* ====================== */
-/*   GLOBAL STYLE         */
-/* ====================== */
-
+<style>
+/* ================= GLOBAL ================= */
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     background: #000;
     color: #fff;
+    scroll-behavior: smooth;
 }
 
 a { color: inherit; text-decoration: none; }
+h1,h2,h3 { letter-spacing: 2px; }
 
-h1, h2, h3 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* ====================== */
-/*   NAVIGATION MENU      */
-/* ====================== */
-
+/* ================= NAV ================= */
 nav {
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
-    z-index: 10;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(7px);
+    z-index: 100;
 }
-
-nav a { 
-    margin-left: 20px;
+nav a {
+    margin-left: 25px;
     font-weight: 600;
+    transition: 0.3s;
 }
+nav a:hover { color: #1ed760; text-shadow: 0 0 8px #1ed760; }
 
-nav a:hover { color: #ccc; }
-
-/* ====================== */
-/*   FULLSCREEN HEADER    */
-/* ====================== */
-
+/* ================= HERO ================= */
 .header-hero {
     height: 100vh;
     background: url("https://i.ibb.co/KVYRTCX/A-Vibe-Poster.png") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     position: relative;
+    display: flex;
+    align-items:center;
+    justify-content:center;
 }
-
 .header-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
 }
-
 .header-content {
     position: relative;
-    z-index: 2;
+    text-align:center;
+    z-index:2;
+}
+.header-content h1 {
+    font-size:60px;
+    font-weight:900;
+    text-shadow:0 0 15px #fff;
+}
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+@keyframes glow {
+    0%,100% { text-shadow:0 0 10px #1ed760, 0 0 30px #1ed760; }
+    50% { text-shadow:0 0 20px #1ed760, 0 0 40px #1ed760; }
 }
 
+/* ================= BUTTON ================= */
 .btn {
-    display: inline-block;
-    border: 1px solid #fff;
-    padding: 12px 28px;
-    border-radius: 40px;
-    margin-top: 20px;
-    transition: 0.3s;
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 32px;
+    border:1px solid #fff;
+    border-radius:40px;
+    transition:0.3s;
 }
-
 .btn:hover {
-    background: #fff;
-    color: #000;
+    background:#1ed760;
+    color:#000;
+    border-color:#1ed760;
+    box-shadow:0 0 15px #1ed760;
 }
 
-/* ====================== */
-/*   CONTENT SECTIONS     */
-/* ====================== */
-
+/* ================= SECTIONS ================= */
 section {
-    padding: 80px 20px;
-    max-width: 1100px;
-    margin: auto;
+    padding:100px 20px;
+    max-width:1100px;
+    margin:auto;
 }
-
 .section-title {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size:38px;
+    text-align:center;
+    margin-bottom:40px;
+    text-shadow:0 0 10px #fff;
 }
 
-/* ====================== */
-/*   PRICING TABLE        */
-/* ====================== */
-
+/* ================= PRICE BOX ================= */
 .combo-box {
-    background: #111;
-    border: 1px solid #333;
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 40px;
+    background:#0d0d0d;
+    border:1px solid #333;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:40px;
 }
-
 .combo-title {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:10px;
+    text-shadow:0 0 10px #1ed760;
 }
 
 .combo-item {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #222;
-    border-radius: 12px;
-    background: #0d0d0d;
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #222;
+    border-radius:12px;
+    background:#050505;
 }
-
 .combo-item h3 {
-    margin: 0;
-    font-size: 22px;
+    margin:0;
+    font-size:22px;
 }
-
-.price {
-    margin-top: 10px;
-    font-size: 22px;
-    font-weight: 700;
-    color: #1ed760;
-}
-
 ul.equip {
-    margin-top: 15px;
-    line-height: 1.7;
+    margin-top:12px;
+    line-height:1.6;
+}
+.price {
+    font-size:24px;
+    margin-top:10px;
+    font-weight:700;
+    color:#1ed760;
+    text-shadow:0 0 10px #1ed760;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    opacity: 0.7;
+/* ================= CONTACT BOX ================= */
+.contact-box {
+    background:#111;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #333;
+    text-align:center;
 }
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>A-Vibe – All Anywhere Alive</title>
-    <link rel="stylesheet" href="style.css">
+footer {
+    text-align:center;
+    padding:20px;
+    opacity:0.6;
+    margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
+<!-- ================= NAV ================= -->
 <nav>
-    <div class="logo"><b>A-VIBE</b></div>
+    <div><b>A-VIBE</b></div>
     <div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
     </div>
 </nav>
 
-<header class="header-hero">
+<!-- ================= HOME ================= -->
+<header id="home" class="header-hero">
     <div class="header-content">
-        <h1>All Anywhere Alive</h1>
-        <h3>5 December 2025 – 13:00 PM</h3>
-        <a class="btn" href="pricing.html">Xem bảng giá</a>
+        <h1 class="glow">ALL ANYWHERE ALIVE</h1>
+        <h3>5 DECEMBER 2025 – 13:00 PM</h3>
+        <a class="btn" href="#pricing">Xem bảng giá</a>
     </div>
 </header>
 
-<footer>
-    © 2025 A-Vibe – Bring the Vibe Anywhere
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>About – A-Vibe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<nav>
-    <div class="logo"><b>A-VIBE</b></div>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="pricing.html">Pricing</a>
-    </div>
-</nav>
-
-<section>
+<!-- ================= ABOUT ================= -->
+<section id="about">
     <h2 class="section-title">About A-Vibe</h2>
 
-    <p style="font-size: 18px; line-height: 1.8;">
-        A-Vibe là dịch vụ DJ di động mang âm nhạc – ánh sáng – cảm xúc đến mọi không gian.
-        Với triết lý “Bring the vibe anywhere”, chúng tôi tạo ra những buổi tiệc bùng nổ,
-        cá nhân hóa hoàn toàn theo gu âm nhạc của khách hàng.
+    <p style="font-size:18px;line-height:1.8;text-align:center;">
+        A-Vibe là dịch vụ DJ di động mang âm nhạc – ánh sáng – vibe bùng nổ đến mọi không gian.
+        Chúng tôi tạo ra những buổi tiệc cá nhân hóa theo đúng gu của bạn, từ sinh nhật – pool party – doanh nghiệp.
     </p>
 
     <h2 class="section-title">Liên hệ</h2>
 
-    <div class="combo-box">
+    <div class="contact-box">
         <p><b>📞 Số điện thoại:</b> 0987248676</p>
         <p><b>📧 Email:</b> avibedj@gmail.com</p>
-        <p><b>📍 Location:</b> TP. Hồ Chí Minh</p>
+        <p><b>📍 Khu vực:</b> TP. Hồ Chí Minh</p>
     </div>
 
     <div style="text-align:center;">
@@ -338,56 +198,131 @@ footer {
     </div>
 </section>
 
-<footer>
-    © 2025 A-Vibe
-</footer>
+<!-- ================= PRICING ================= -->
+<section id="pricing">
+    <h1 class="section-title">Bảng Giá Combo</h1>
+
+    <!-- STANDARD -->
+    <div class="combo-box">
+        <div class="combo-title">STANDARD COMBO — Entry Level</div>
+
+        <!-- Màn đêm -->
+        <div class="combo-item">
+            <h3>Màn đêm (20–30 khách)</h3>
+            <ul class="equip">
+                <li>DJ Pioneer XDJ-XZ</li>
+                <li>2 loa JBL PRX 825W</li>
+                <li>1 cặp micro Rode M5MP</li>
+                <li>1 Moving Head cơ bản</li>
+                <li>1 kỹ thuật viên setup</li>
+                <li>Dây & phụ kiện</li>
+            </ul>
+            <div class="price">6.000.000₫</div>
+        </div>
+
+        <!-- Tối muộn -->
+        <div class="combo-item">
+            <h3>Tối muộn (30–40 khách)</h3>
+            <ul class="equip">
+                <li>DJ Pioneer XDJ-XZ</li>
+                <li>3 loa JBL PRX 825W</li>
+                <li>2 Moving Head / Laser</li>
+                <li>1 kỹ thuật viên âm thanh</li>
+                <li>1 nhân viên ánh sáng</li>
+            </ul>
+            <div class="price">7.000.000₫</div>
+        </div>
+
+        <!-- Bay bổng -->
+        <div class="combo-item">
+            <h3>Bay bổng (40–50 khách)</h3>
+            <ul class="equip">
+                <li>DJ Pioneer XDJ-XZ</li>
+                <li>4 loa JBL PRX 825W</li>
+                <li>2 Moving Head + 1 Laser</li>
+                <li>Mixer Rodecaster Pro II</li>
+                <li>Tủ âm thanh mini</li>
+                <li>3 kỹ thuật viên</li>
+            </ul>
+            <div class="price">8.000.000₫</div>
+        </div>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="combo-box">
+        <div class="combo-title">PREMIUM COMBO — Professional</div>
+
+        <div class="combo-item">
+            <h3>Nhộn nhịp (20–30 khách)</h3>
+            <ul class="equip">
+                <li>DJ AlphaTheta XDJ-AZ</li>
+                <li>2 loa JBL PRX915</li>
+                <li>2 Moving Head + 1 Laser</li>
+                <li>Mixer Rodecaster Pro II</li>
+                <li>1 kỹ thuật viên + 1 ánh sáng</li>
+            </ul>
+            <div class="price">7.000.000₫</div>
+        </div>
+
+        <div class="combo-item">
+            <h3>Kết nối (30–40 khách)</h3>
+            <ul class="equip">
+                <li>DJ AlphaTheta XDJ-AZ</li>
+                <li>3 loa JBL PRX915</li>
+                <li>2 Moving Head + 1 Laser</li>
+                <li>Stage light mở rộng</li>
+                <li>1 quản lý + 2 kỹ thuật viên</li>
+            </ul>
+            <div class="price">8.000.000₫</div>
+        </div>
+
+        <div class="combo-item">
+            <h3>Chia sẻ (40–50 khách)</h3>
+            <ul class="equip">
+                <li>DJ AlphaTheta XDJ-AZ</li>
+                <li>4 loa JBL PRX915</li>
+                <li>3 Moving Head + 1 Laser</li>
+                <li>1 quản lý + 2 kỹ thuật viên + 1 hỗ trợ ánh sáng</li>
+            </ul>
+            <div class="price">10.000.000₫</div>
+        </div>
+    </div>
+
+    <!-- ELITE -->
+    <div class="combo-box">
+        <div class="combo-title">ELITE COMBO — Showcase / Đỉnh cao</div>
+
+        <div class="combo-item">
+            <h3>Hòa mình (30–40 khách)</h3>
+            <ul class="equip">
+                <li>2 bàn DJ (AZ + XZ)</li>
+                <li>4 loa JBL PRX915 + PRX825W</li>
+                <li>2 cặp micro</li>
+                <li>3 Moving Head + 2 Laser</li>
+                <li>1 màn LED P3 (6m2)</li>
+                <li>1 DJ chính + 1 DJ phụ</li>
+                <li>1 quản lý + 2 kỹ thuật viên</li>
+            </ul>
+            <div class="price">15.000.000₫</div>
+        </div>
+
+        <div class="combo-item">
+            <h3>Cảm nhận (40–50 khách)</h3>
+            <ul class="equip">
+                <li>2 bàn DJ (AZ + XZ)</li>
+                <li>6 loa JBL PRX915 + PRX825W</li>
+                <li>4 Moving Head + 2 Laser</li>
+                <li>Ánh sáng ALED BSW 500 CMY IP</li>
+                <li>1 màn LED P3</li>
+                <li>1 DJ chính + DJ phụ</li>
+                <li>1 quản lý tổng + 2 kỹ thuật viên + 1 brand staff</li>
+            </ul>
+            <div class="price">20.000.000₫</div>
+        </div>
+    </div>
+</section>
+
+<footer>© 2025 A-Vibe – Bring the Vibe Anywhere</footer>
 
 </body>
 </html>
-
-    <!-- HERO BANNER -->
-    <header>
-        <div class="content">
-            <h1>ALL ANYWHERE ALIVE</h1>
-            <h3>5 DECEMBER 2025 – 13:00 PM</h3>
-            <a href="#contact" class="btn">Liên hệ đặt sự kiện</a>
-        </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>Về sự kiện</h2>
-        <p class="about">
-            ALL ANYWHERE ALIVE là sự kiện đại diện cho tinh thần của A-Vibe:
-            <br><br>
-            <b>Âm nhạc – Ánh sáng – Cảm xúc – Ở mọi nơi!</b>
-            <br><br>
-            Chúng tôi mang đến một đêm bùng nổ với vibe hiện đại, hiệu ứng visual đầy năng lượng và những giai điệu được xây dựng
-            để kết nối mọi người. Một trải nghiệm âm thanh sống động – nơi âm nhạc thật sự “sống”.
-        </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>Liên hệ</h2>
-
-        <div class="contact-box">
-            <div class="contact-info">
-                📞 <b>Số điện thoại:</b> 0987 248 676 <br>
-                📧 <b>Email:</b> avibedj@gmail.com <br>
-                📍 A-Vibe – Bring the vibe anywhere
-            </div>
-        </div>
-
-        <a href="tel:0987248676" class="btn">Gọi ngay</a>
-        <a href="mailto:avibedj@gmail.com" class="btn">Gửi Email</a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        © 2025 A-Vibe – All Anywhere Alive
-    </footer>
-
-</body>
-</html>
-
