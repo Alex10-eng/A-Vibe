@@ -3,326 +3,564 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A-Vibe – All Anywhere Alive</title>
+<title>A-Vibe – Bring The Vibe Anywhere</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
-/* ================= GLOBAL ================= */
+/* ============== RESET ============== */
 body {
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: #000;
     color: #fff;
     scroll-behavior: smooth;
 }
+a{text-decoration:none;color:inherit;}
+h1,h2,h3{letter-spacing:2px;}
 
-a { color: inherit; text-decoration: none; }
-h1,h2,h3 { letter-spacing: 2px; }
-
-/* ================= NAV ================= */
+/* =============== NAVIGATION =============== */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 15px 40px;
+    padding: 18px 45px;
     display: flex;
     justify-content: space-between;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(7px);
-    z-index: 100;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+}
+nav .logo {
+    font-size: 28px;
+    font-weight: 900;
+    text-shadow: 0 0 15px #1ed760;
 }
 nav a {
     margin-left: 25px;
     font-weight: 600;
     transition: 0.3s;
 }
-nav a:hover { color: #1ed760; text-shadow: 0 0 8px #1ed760; }
+nav a:hover {
+    color: #1ed760;
+    text-shadow: 0 0 10px #1ed760;
+}
 
-/* ================= HERO ================= */
-.header-hero {
-    height: 100vh;
-    background: url("https://i.ibb.co/KVYRTCX/A-Vibe-Poster.png") center/cover no-repeat;
-    position: relative;
-    display: flex;
-    align-items:center;
-    justify-content:center;
+/* =============== VIDEO BACKGROUND =============== */
+#video-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(45%);
 }
-.header-hero::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-}
-.header-content {
-    position: relative;
-    text-align:center;
-    z-index:2;
-}
-.header-content h1 {
-    font-size:60px;
-    font-weight:900;
-    text-shadow:0 0 15px #fff;
-}
+
+/* =============== NEON GLOW =============== */
 .glow {
-    animation: glow 2s ease-in-out infinite;
+    animation: glowPulse 2s infinite ease-in-out;
 }
-@keyframes glow {
-    0%,100% { text-shadow:0 0 10px #1ed760, 0 0 30px #1ed760; }
-    50% { text-shadow:0 0 20px #1ed760, 0 0 40px #1ed760; }
+@keyframes glowPulse {
+    0%,100% { text-shadow: 0 0 10px #1ed760, 0 0 20px #1ed760; }
+    50% { text-shadow: 0 0 30px #1ed760, 0 0 50px #1ed760; }
 }
 
-/* ================= BUTTON ================= */
+/* =============== BUTTON STYLE =============== */
 .btn {
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 32px;
-    border:1px solid #fff;
-    border-radius:40px;
-    transition:0.3s;
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid #1ed760;
+    color: #1ed760;
+    border-radius: 40px;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: 0.3s;
+    text-transform: uppercase;
 }
 .btn:hover {
-    background:#1ed760;
-    color:#000;
-    border-color:#1ed760;
-    box-shadow:0 0 15px #1ed760;
+    background: #1ed760;
+    color: #000;
+    box-shadow: 0 0 15px #1ed760;
 }
 
-/* ================= SECTIONS ================= */
+/* =============== SECTIONS GENERAL =============== */
 section {
-    padding:100px 20px;
-    max-width:1100px;
-    margin:auto;
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 .section-title {
-    font-size:38px;
-    text-align:center;
-    margin-bottom:40px;
-    text-shadow:0 0 10px #fff;
-}
-
-/* ================= PRICE BOX ================= */
-.combo-box {
-    background:#0d0d0d;
-    border:1px solid #333;
-    padding:25px;
-    border-radius:20px;
-    margin-bottom:40px;
-}
-.combo-title {
-    font-size:28px;
-    font-weight:700;
-    margin-bottom:10px;
-    text-shadow:0 0 10px #1ed760;
-}
-
-.combo-item {
-    margin-top:20px;
-    padding:20px;
-    border:1px solid #222;
-    border-radius:12px;
-    background:#050505;
-}
-.combo-item h3 {
-    margin:0;
-    font-size:22px;
-}
-ul.equip {
-    margin-top:12px;
-    line-height:1.6;
-}
-.price {
-    font-size:24px;
-    margin-top:10px;
-    font-weight:700;
-    color:#1ed760;
-    text-shadow:0 0 10px #1ed760;
-}
-
-/* ================= CONTACT BOX ================= */
-.contact-box {
-    background:#111;
-    padding:25px;
-    border-radius:15px;
-    border:1px solid #333;
-    text-align:center;
-}
-footer {
-    text-align:center;
-    padding:20px;
-    opacity:0.6;
-    margin-top:40px;
+    font-size: 42px;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 40px;
+    text-shadow: 0 0 20px #fff;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAV ================= -->
+<!-- =============== BACKGROUND VIDEO =============== -->
+<video id="video-bg" autoplay muted loop playsinline>
+    <source src="https://videos.pexels.com/video-files/3058749/3058749-uhd_2560_1440_25fps.mp4" type="video/mp4">
+</video>
+
+<!-- =============== NAVIGATION =============== -->
 <nav>
-    <div><b>A-VIBE</b></div>
+    <div class="logo glow">A-VIBE</div>
     <div>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#pricing">Pricing</a>
+        <a href="#booking">Booking</a>
+        <a href="#contact">Contact</a>
     </div>
 </nav>
+<!-- =============== HOME SECTION =============== -->
+<section id="home" style="padding-top:160px; text-align:center;">
 
-<!-- ================= HOME ================= -->
-<header id="home" class="header-hero">
-    <div class="header-content">
-        <h1 class="glow">ALL ANYWHERE ALIVE</h1>
-        <h3>5 DECEMBER 2025 – 13:00 PM</h3>
-        <a class="btn" href="#pricing">Xem bảng giá</a>
-    </div>
-</header>
+    <h1 class="glow" style="font-size:70px; font-weight:900; margin-bottom:10px;">
+        ALL ANYWHERE ALIVE
+    </h1>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
-    <h2 class="section-title">About A-Vibe</h2>
+    <h3 style="font-size:22px; opacity:0.85; letter-spacing:3px;">
+        5 DECEMBER 2025 — 13:00 PM
+    </h3>
 
-    <p style="font-size:18px;line-height:1.8;text-align:center;">
-        A-Vibe là dịch vụ DJ di động mang âm nhạc – ánh sáng – vibe bùng nổ đến mọi không gian.
-        Chúng tôi tạo ra những buổi tiệc cá nhân hóa theo đúng gu của bạn, từ sinh nhật – pool party – doanh nghiệp.
-    </p>
+    <a href="#pricing" class="btn">Xem Bảng Giá</a>
 
-    <h2 class="section-title">Liên hệ</h2>
-
-    <div class="contact-box">
-        <p><b>📞 Số điện thoại:</b> 0987248676</p>
-        <p><b>📧 Email:</b> avibedj@gmail.com</p>
-        <p><b>📍 Khu vực:</b> TP. Hồ Chí Minh</p>
-    </div>
-
-    <div style="text-align:center;">
-        <a class="btn" href="tel:0987248676">Gọi ngay</a>
-        <a class="btn" href="mailto:avibedj@gmail.com">Gửi email</a>
-    </div>
 </section>
 
-<!-- ================= PRICING ================= -->
-<section id="pricing">
-    <h1 class="section-title">Bảng Giá Combo</h1>
+<!-- =============== BRAND STORY INTRO =============== -->
+<section id="about" style="margin-top:60px;">
+    <h2 class="section-title">A-Vibe là ai?</h2>
 
-    <!-- STANDARD -->
+    <p style="font-size:20px; line-height:1.8; text-align:center; max-width:900px; margin:auto;">
+        A-Vibe là dịch vụ DJ di động — mang âm nhạc, ánh sáng và vibe bùng nổ 
+        đến bất kỳ không gian nào: nhà riêng, rooftop, hồ bơi, villa, homestay, 
+        resort, sự kiện công ty, khai trương và mọi buổi tiệc cá nhân hoá vibe theo yêu cầu.
+    </p>
+
+    <br><br>
+
+    <p style="font-size:18px; line-height:1.8; opacity:0.8; text-align:center; max-width:900px; margin:auto;">
+        “DJ không chỉ dành cho bar hay club.  
+        A-Vibe xuất hiện <b>mọi nơi</b> — miễn là nơi đó có người muốn sống hết mình cùng âm nhạc.”
+    </p>
+
+</section>
+<!-- =============== ABOUT SECTION (FULL) =============== -->
+<section id="about-full" style="margin-top:40px;">
+
+    <h2 class="section-title">Giới Thiệu Doanh Nghiệp</h2>
+
+    <p style="font-size:20px; line-height:1.8; text-align:center; max-width:950px; margin:auto;">
+        A-Vibe là đơn vị cung cấp dịch vụ DJ di động – mang âm nhạc, ánh sáng và vibe bùng nổ 
+        đến mọi không gian như nhà riêng, rooftop, homestay, hồ bơi, tiệc sinh nhật và sự kiện công ty.
+        <br><br>
+        Chúng tôi tạo ra trải nghiệm “<b>DJ ở mọi nơi – Vibe cho mọi người</b>”.
+    </p>
+
+    <!-- IMAGE SLOT -->
+    <div style="margin-top:50px; text-align:center;">
+        <div style="
+            width:100%; 
+            max-width:900px; 
+            height:300px; 
+            margin:auto; 
+            border:2px dashed #1ed760; 
+            border-radius:20px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            opacity:0.6;
+        ">
+            <span style="font-size:18px;">(Khu vực chèn ảnh thương hiệu / DJ / Sự kiện)</span>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =============== BRAND STORY =============== -->
+<section id="story" style="margin-top:80px;">
+
+    <h2 class="section-title">Câu Chuyện Thương Hiệu</h2>
+
+    <p style="font-size:18px; line-height:1.9; max-width:950px; margin:auto; opacity:0.85; text-align:justify;">
+        Ngày trước, khi người ta nhắc đến DJ, họ thường nghĩ đến quán bar, khói thuốc 
+        và những đêm nhạc ồn ào. Nhưng với chúng tôi, DJ không chỉ là tiếng nhạc vang lên 
+        trong ánh đèn chớp tắt, mà là nghệ thuật của cảm xúc và sự kết nối giữa con người.
+        <br><br>
+        Ý tưởng ấy bắt đầu từ một buổi tiệc nhỏ giữa bạn bè – không có sân khấu lớn hay ánh sáng rực rỡ, 
+        chỉ có tiếng cười, âm nhạc và vibe lan tỏa. Khoảnh khắc đó khiến chúng tôi nhận ra rằng 
+        âm nhạc có thể hiện diện ở bất cứ đâu, miễn là có những con người muốn sẻ chia.
+        <br><br>
+        Vì thế, A-Vibe được tạo nên từ niềm tin rằng:  
+        <b>“Âm nhạc DJ không chỉ trong bar – nó thuộc về mọi không gian mà giới trẻ cảm thấy thuộc về.”</b>
+    </p>
+
+</section>
+
+
+<!-- =============== MISSION & CORE VALUES =============== -->
+<section id="mission" style="margin-top:80px;">
+
+    <h2 class="section-title">Sứ Mệnh & Giá Trị Cốt Lõi</h2>
+
+    <div style="max-width:1000px; margin:auto;">
+
+        <div style="
+            background:#0d0d0d; 
+            padding:30px; 
+            border-radius:20px; 
+            border:1px solid #1ed760;
+            margin-bottom:25px;
+        ">
+            <h3 style="font-size:22px; margin-bottom:10px; color:#1ed760;">🎯 Sứ mệnh</h3>
+            <p style="font-size:18px; line-height:1.7;">
+                Mang âm nhạc & năng lượng tích cực đến bất kỳ nơi nào khách hàng muốn — 
+                với chất lượng âm thanh chuẩn sự kiện và vibe đúng gu.
+            </p>
+        </div>
+
+        <div style="
+            background:#0d0d0d; 
+            padding:30px; 
+            border-radius:20px; 
+            border:1px solid #1ed760;
+        ">
+            <h3 style="font-size:22px; margin-bottom:10px; color:#1ed760;">💎 Giá trị cốt lõi</h3>
+
+            <ul style="font-size:18px; line-height:1.9;">
+                <li><b>Linh hoạt:</b> xuất hiện ở bất kỳ không gian nào</li>
+                <li><b>Chất lượng:</b> thiết bị chuẩn sự kiện – DJ chuyên nghiệp</li>
+                <li><b>Cảm xúc:</b> mỗi buổi tiệc mang 1 câu chuyện âm nhạc riêng</li>
+                <li><b>Kết nối:</b> âm nhạc gắn kết con người và tạo khoảnh khắc</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+<!-- =============== PRICING SECTION =============== -->
+<section id="pricing" style="margin-top:80px;">
+
+    <h2 class="section-title">Bảng Giá Combo</h2>
+
+    <!-- ================= STANDARD ================= -->
     <div class="combo-box">
         <div class="combo-title">STANDARD COMBO — Entry Level</div>
 
         <!-- Màn đêm -->
         <div class="combo-item">
-            <h3>Màn đêm (20–30 khách)</h3>
+            <h3>Màn Đêm (20–30 khách)</h3>
+            <p>Bắt đầu cuộc vui trong không gian ấm cúng.</p>
+
             <ul class="equip">
                 <li>DJ Pioneer XDJ-XZ</li>
-                <li>2 loa JBL PRX 825W</li>
+                <li>2 loa JBL PRX825W</li>
                 <li>1 cặp micro Rode M5MP</li>
-                <li>1 Moving Head cơ bản</li>
+                <li>1 đèn Moving Head cơ bản</li>
                 <li>1 kỹ thuật viên setup</li>
-                <li>Dây & phụ kiện</li>
+                <li>Dây, phụ kiện setup</li>
             </ul>
+
             <div class="price">6.000.000₫</div>
         </div>
 
         <!-- Tối muộn -->
         <div class="combo-item">
-            <h3>Tối muộn (30–40 khách)</h3>
+            <h3>Tối Muộn (30–40 khách)</h3>
+            <p>Không khí cuốn hơn – vibe đỉnh hơn.</p>
+
             <ul class="equip">
                 <li>DJ Pioneer XDJ-XZ</li>
-                <li>3 loa JBL PRX 825W</li>
+                <li>3 loa JBL PRX825W</li>
+                <li>1 cặp micro Rode M5MP</li>
                 <li>2 Moving Head / Laser</li>
                 <li>1 kỹ thuật viên âm thanh</li>
                 <li>1 nhân viên ánh sáng</li>
+                <li>Ổn áp & phụ kiện mở rộng</li>
             </ul>
+
             <div class="price">7.000.000₫</div>
         </div>
 
-        <!-- Bay bổng -->
+        <!-- Bay Bổng -->
         <div class="combo-item">
-            <h3>Bay bổng (40–50 khách)</h3>
+            <h3>Bay Bổng (40–50 khách)</h3>
+            <p>Vibe mạnh – cảm xúc đỉnh – thả mình theo nhạc.</p>
+
             <ul class="equip">
                 <li>DJ Pioneer XDJ-XZ</li>
-                <li>4 loa JBL PRX 825W</li>
+                <li>4 loa JBL PRX825W</li>
+                <li>1 cặp micro Rode M5MP</li>
                 <li>2 Moving Head + 1 Laser</li>
                 <li>Mixer Rodecaster Pro II</li>
                 <li>Tủ âm thanh mini</li>
                 <li>3 kỹ thuật viên</li>
             </ul>
+
             <div class="price">8.000.000₫</div>
         </div>
     </div>
 
-    <!-- PREMIUM -->
+    <!-- ================= PREMIUM ================= -->
     <div class="combo-box">
         <div class="combo-title">PREMIUM COMBO — Professional</div>
 
         <div class="combo-item">
-            <h3>Nhộn nhịp (20–30 khách)</h3>
+            <h3>Nhộn Nhịp (20–30 khách)</h3>
             <ul class="equip">
                 <li>DJ AlphaTheta XDJ-AZ</li>
                 <li>2 loa JBL PRX915</li>
                 <li>2 Moving Head + 1 Laser</li>
                 <li>Mixer Rodecaster Pro II</li>
+                <li>Ánh sáng sân khấu cơ bản</li>
                 <li>1 kỹ thuật viên + 1 ánh sáng</li>
             </ul>
             <div class="price">7.000.000₫</div>
         </div>
 
         <div class="combo-item">
-            <h3>Kết nối (30–40 khách)</h3>
+            <h3>Kết Nối (30–40 khách)</h3>
             <ul class="equip">
                 <li>DJ AlphaTheta XDJ-AZ</li>
                 <li>3 loa JBL PRX915</li>
                 <li>2 Moving Head + 1 Laser</li>
-                <li>Stage light mở rộng</li>
-                <li>1 quản lý + 2 kỹ thuật viên</li>
+                <li>Mixer Rodecaster Pro II</li>
+                <li>Stage Light mở rộng</li>
+                <li>1 quản lý setup</li>
+                <li>2 kỹ thuật viên</li>
             </ul>
             <div class="price">8.000.000₫</div>
         </div>
 
         <div class="combo-item">
-            <h3>Chia sẻ (40–50 khách)</h3>
+            <h3>Chia Sẻ (40–50 khách)</h3>
             <ul class="equip">
                 <li>DJ AlphaTheta XDJ-AZ</li>
                 <li>4 loa JBL PRX915</li>
                 <li>3 Moving Head + 1 Laser</li>
-                <li>1 quản lý + 2 kỹ thuật viên + 1 hỗ trợ ánh sáng</li>
+                <li>Mixer Rodecaster Pro II</li>
+                <li>Stage light nâng cao</li>
+                <li>1 quản lý setup</li>
+                <li>2 kỹ thuật viên + 1 hỗ trợ ánh sáng</li>
             </ul>
             <div class="price">10.000.000₫</div>
         </div>
     </div>
 
-    <!-- ELITE -->
+    <!-- ================= ELITE ================= -->
     <div class="combo-box">
-        <div class="combo-title">ELITE COMBO — Showcase / Đỉnh cao</div>
+        <div class="combo-title">ELITE COMBO — Showcase</div>
 
         <div class="combo-item">
-            <h3>Hòa mình (30–40 khách)</h3>
+            <h3>Hòa Mình (30–40 khách)</h3>
             <ul class="equip">
-                <li>2 bàn DJ (AZ + XZ)</li>
+                <li>2 bàn DJ (AlphaTheta XDJ-AZ + Pioneer XDJ-XZ)</li>
                 <li>4 loa JBL PRX915 + PRX825W</li>
-                <li>2 cặp micro</li>
+                <li>2 cặp micro Rode M5MP</li>
                 <li>3 Moving Head + 2 Laser</li>
-                <li>1 màn LED P3 (6m2)</li>
+                <li>1 màn LED P3 (6m²)</li>
+                <li>Mixer Rodecaster Pro II</li>
                 <li>1 DJ chính + 1 DJ phụ</li>
-                <li>1 quản lý + 2 kỹ thuật viên</li>
+                <li>1 quản lý sự kiện</li>
+                <li>2 kỹ thuật viên</li>
             </ul>
             <div class="price">15.000.000₫</div>
         </div>
 
         <div class="combo-item">
-            <h3>Cảm nhận (40–50 khách)</h3>
+            <h3>Cảm Nhận (40–50 khách)</h3>
             <ul class="equip">
-                <li>2 bàn DJ (AZ + XZ)</li>
-                <li>6 loa JBL PRX915 + PRX825W</li>
+                <li>2 bàn DJ (AlphaTheta XDJ-AZ + Pioneer XDJ-XZ)</li>
+                <li>6 loa JBL PRX915 + PRX825W (Sub/Full Mix)</li>
+                <li>2 cặp micro Rode M5MP</li>
                 <li>4 Moving Head + 2 Laser</li>
-                <li>Ánh sáng ALED BSW 500 CMY IP</li>
-                <li>1 màn LED P3</li>
-                <li>1 DJ chính + DJ phụ</li>
-                <li>1 quản lý tổng + 2 kỹ thuật viên + 1 brand staff</li>
+                <li>Ánh sáng sân khấu ALED BSW 500 CMY IP</li>
+                <li>1 màn LED P3 (6m²)</li>
+                <li>Mixer Rodecaster Pro II</li>
+                <li>1 DJ chính + 1 DJ phụ</li>
+                <li>1 quản lý tổng</li>
+                <li>2 kỹ thuật viên</li>
+                <li>1 nhân viên marketing/brand</li>
             </ul>
             <div class="price">20.000.000₫</div>
         </div>
     </div>
 </section>
 
-<footer>© 2025 A-Vibe – Bring the Vibe Anywhere</footer>
+
+
+<!-- =============== BẢNG GIÁ THIẾT BỊ =============== -->
+<section id="device-price" style="margin-top:80px;">
+
+    <h2 class="section-title">Bảng Giá Thuê Thiết Bị</h2>
+
+    <div class="combo-box">
+        <div class="combo-item">
+            <h3>Bàn DJ & Mixer</h3>
+            <ul class="equip">
+                <li>Pioneer XDJ-XZ — 400k/giờ | 2.500k/ngày</li>
+                <li>AlphaTheta XDJ-AZ — 500k/giờ | 3.000k/ngày</li>
+                <li>Mixer Rodecaster Pro II — 300k/giờ | 1.800k/ngày</li>
+            </ul>
+        </div>
+
+        <div class="combo-item">
+            <h3>Loa JBL</h3>
+            <ul class="equip">
+                <li>JBL PRX825W — 300k/giờ | 1.800k/ngày</li>
+                <li>JBL PRX915 — 350k/giờ | 2.000k/ngày</li>
+            </ul>
+        </div>
+
+        <div class="combo-item">
+            <h3>Ánh sáng</h3>
+            <ul class="equip">
+                <li>Moving Head Godox SL200 III — 200k/giờ | 1.200k/ngày</li>
+                <li>Laser Super Beam 300 — 250k/giờ | 1.500k/ngày</li>
+            </ul>
+        </div>
+
+        <div class="combo-item">
+            <h3>LED & Visual</h3>
+            <ul class="equip">
+                <li>Màn LED P3 (6m²) — 4.500k/ngày</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+<!-- =============== BOOKING FORM =============== -->
+<section id="booking" style="margin-top:100px;">
+    <h2 class="section-title">Đặt Lịch Sự Kiện</h2>
+
+    <div style="
+        background:#0d0d0d; 
+        border:1px solid #1ed760; 
+        padding:30px; 
+        border-radius:20px;
+        max-width:700px;
+        margin:auto;
+    ">
+        <form>
+
+            <label>Họ và tên</label><br>
+            <input type="text" required style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none;">
+
+            <label>Số điện thoại</label><br>
+            <input type="tel" required style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none;">
+
+            <label>Ngày tổ chức</label><br>
+            <input type="date" required style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none;">
+
+            <label>Địa điểm</label><br>
+            <input type="text" placeholder="VD: Villa Quận 9, Rooftop Quận 1..." 
+                style="width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none;">
+
+            <label>Chọn Combo</label><br>
+            <select style="width:100%; padding:12px; margin:10px 0; border-radius:10px;">
+                <option>Standard Combo</option>
+                <option>Premium Combo</option>
+                <option>Elite Combo</option>
+                <option>Thuê thiết bị riêng</option>
+            </select>
+
+            <label>Ghi chú thêm</label><br>
+            <textarea style="width:100%; padding:12px; margin:10px 0; border-radius:10px; height:120px;"></textarea>
+
+            <button class="btn" type="submit" style="width:100%;">Gửi yêu cầu</button>
+        </form>
+    </div>
+
+</section>
+
+
+
+<!-- =============== POPUP BÁO GIÁ NHANH =============== -->
+<div id="popup" style="
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#1ed760;
+    padding:18px 25px;
+    border-radius:15px;
+    color:#000;
+    font-weight:700;
+    box-shadow:0 0 15px #1ed760;
+    cursor:pointer;
+    z-index:999;
+">
+    💬 Nhận báo giá nhanh
+</div>
+
+<script>
+document.getElementById("popup").onclick = function() {
+    alert("A-Vibe sẽ gửi báo giá nhanh qua Zalo hoặc Messenger trong 3 phút!");
+};
+</script>
+
+
+
+<!-- =============== CONTACT SECTION =============== -->
+<section id="contact" style="margin-top:80px;">
+    <h2 class="section-title">Liên Hệ</h2>
+
+    <div style="text-align:center; font-size:20px; line-height:1.9;">
+
+        📞 <b>Số điện thoại:</b> 0987248676 <br>
+        📧 <b>Email:</b> avibedj@gmail.com <br><br>
+
+        🌐 <b>Facebook:</b> 
+        <a href="https://www.facebook.com/profile.php?id=615834595" target="_blank" style="color:#1ed760;">A-Vibe</a><br>
+
+        📸 <b>Instagram:</b> 
+        <a href="https://www.instagram.com/avibedj/" target="_blank" style="color:#1ed760;">@avibedj</a><br>
+
+        🎵 <b>TikTok:</b> 
+        <span style="color:#1ed760;">A vibe</span><br>
+    </div>
+</section>
+
+
+
+<!-- =============== ZALO FLOAT BUTTON =============== -->
+<a href="https://zalo.me/0987248676" target="_blank"
+style="
+    position:fixed;
+    bottom:90px;
+    right:22px;
+    background:#0068ff;
+    padding:14px 20px;
+    border-radius:50px;
+    color:#fff;
+    font-weight:700;
+    box-shadow:0 0 10px #0068ff;
+    z-index:999;
+">
+    Zalo
+</a>
+
+
+
+<!-- =============== AUDIO BACKGROUND =============== -->
+<audio autoplay loop hidden>
+    <source src="https://files.catbox.moe/7k6e7l.mp3" type="audio/mp3">
+</audio>
+
+
+
+<!-- =============== FOOTER =============== -->
+<footer style="text-align:center; padding:30px; margin-top:60px; opacity:0.7;">
+    © 2025 A-Vibe — Bring The Vibe Anywhere
+</footer>
 
 </body>
 </html>
