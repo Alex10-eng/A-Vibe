@@ -116,6 +116,234 @@
     </style>
 </head>
 <body>
+/* ====================== */
+/*   GLOBAL STYLE         */
+/* ====================== */
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ====================== */
+/*   NAVIGATION MENU      */
+/* ====================== */
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    z-index: 10;
+}
+
+nav a { 
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+nav a:hover { color: #ccc; }
+
+/* ====================== */
+/*   FULLSCREEN HEADER    */
+/* ====================== */
+
+.header-hero {
+    height: 100vh;
+    background: url("https://i.ibb.co/KVYRTCX/A-Vibe-Poster.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.header-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.btn {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 12px 28px;
+    border-radius: 40px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* ====================== */
+/*   CONTENT SECTIONS     */
+/* ====================== */
+
+section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* ====================== */
+/*   PRICING TABLE        */
+/* ====================== */
+
+.combo-box {
+    background: #111;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.combo-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.combo-item {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 12px;
+    background: #0d0d0d;
+}
+
+.combo-item h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.price {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1ed760;
+}
+
+ul.equip {
+    margin-top: 15px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    opacity: 0.7;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>A-Vibe – All Anywhere Alive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo"><b>A-VIBE</b></div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+    </div>
+</nav>
+
+<header class="header-hero">
+    <div class="header-content">
+        <h1>All Anywhere Alive</h1>
+        <h3>5 December 2025 – 13:00 PM</h3>
+        <a class="btn" href="pricing.html">Xem bảng giá</a>
+    </div>
+</header>
+
+<footer>
+    © 2025 A-Vibe – Bring the Vibe Anywhere
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>About – A-Vibe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo"><b>A-VIBE</b></div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+    </div>
+</nav>
+
+<section>
+    <h2 class="section-title">About A-Vibe</h2>
+
+    <p style="font-size: 18px; line-height: 1.8;">
+        A-Vibe là dịch vụ DJ di động mang âm nhạc – ánh sáng – cảm xúc đến mọi không gian.
+        Với triết lý “Bring the vibe anywhere”, chúng tôi tạo ra những buổi tiệc bùng nổ,
+        cá nhân hóa hoàn toàn theo gu âm nhạc của khách hàng.
+    </p>
+
+    <h2 class="section-title">Liên hệ</h2>
+
+    <div class="combo-box">
+        <p><b>📞 Số điện thoại:</b> 0987248676</p>
+        <p><b>📧 Email:</b> avibedj@gmail.com</p>
+        <p><b>📍 Location:</b> TP. Hồ Chí Minh</p>
+    </div>
+
+    <div style="text-align:center;">
+        <a class="btn" href="tel:0987248676">Gọi ngay</a>
+        <a class="btn" href="mailto:avibedj@gmail.com">Gửi email</a>
+    </div>
+</section>
+
+<footer>
+    © 2025 A-Vibe
+</footer>
+
+</body>
+</html>
 
     <!-- HERO BANNER -->
     <header>
@@ -162,3 +390,4 @@
 
 </body>
 </html>
+
